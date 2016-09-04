@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour {
 
-	public const float BOTTOM_GAP = 0.25f;
+	// Height of ground part under the each tile
+	public const float BOTTOM_GAP = 0.15f;
 
-	public Size size;
+	// Tile size is set to 1 height and 1 width
+	public static Size size = new Size (1, 1);
 
 	public void SetTile (Int2 point) {
-		var pos = new Vector2 (
-			point.x * 0.5f - point.y * 0.5f,
-			(point.x * 0.5f + point.y * 0.5f) / 2
-		);
+		var pos = GetTilePositon (point);
 		transform.position = pos;
+	}
+
+	public Vector2 GetTilePositon (Int2 point) {
+		return new Vector2 (
+			point.x * size.half_width - point.y * size.half_height,
+			(point.x * size.half_width + point.y * size.half_height) * 0.5f
+		);
 	}
 }

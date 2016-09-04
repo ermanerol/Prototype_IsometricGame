@@ -5,6 +5,9 @@ using UnityEngine;
 //TODO We need to make this abstract or interface things
 public class Building : Tile {
 
+	public const float SURROUNDING_GAP = 0.025f;
+	public const float BUILDING_GAP = 0.05f;
+
 	private BuildingData set;
 
 	public void SetBuilding (BuildingData set) {
@@ -13,13 +16,8 @@ public class Building : Tile {
 	}
 
 	public void SetOnTopOfTile (Int2 point) {
-//		x += 1 - set.size.width; //TODO Should we use bottom corner to place ?
-//		y += 1 - set.size.height;
-		var vec = new Vector3 (
-			point.x * 0.5f - point.y * 0.5f,
-			(point.x * 0.5f + point.y * 0.5f) / 2 + Tile.BOTTOM_GAP,
-			-1
-		);
-		transform.position = vec;
+		var pos = GetTilePositon (point);
+		pos.y += set.size.height * (BUILDING_GAP + SURROUNDING_GAP) + Tile.BOTTOM_GAP;
+		transform.position = pos;
 	}
 }

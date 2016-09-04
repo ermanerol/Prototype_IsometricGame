@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Name: BuildingsData
   m_EditorClassIdentifier: 
   buildingSets:
-  - sprite: {fileID: 21300000, guid: f589f55945c144a748d2e49b95e406a6, type: 3}
+  - sprite: {fileID: 21300000, guid: b6c8402e2c01947b6ab97b075e15f9ac, type: 3}
     size:
       width: 2
       height: 2
-  - sprite: {fileID: 21300000, guid: 85ee1ffee24c44ee8992aca3b0955fe5, type: 3}
+  - sprite: {fileID: 21300000, guid: 74cb82c3cc03741b2a7bb66e43d6b2b3, type: 3}
     size:
       width: 1
       height: 1

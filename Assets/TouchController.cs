@@ -34,9 +34,7 @@ public class TouchController : MonoBehaviour {
 		else {
 			Vector2 pos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			var point = World.GetTile (pos);
-			Debug.Log ("point " + point);
 			building.SetOnTopOfTile (point);
-//			building.transform.position = pos;
 		}
 	}
 }
