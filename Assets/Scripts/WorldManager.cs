@@ -24,26 +24,28 @@ public class WorldManager : MonoBehaviour {
 				tile.GetComponent<Tile> ().SetTile (new Int2 (x, y));
 			}
 		}
+
+		GameStateManager.SetGameState (GameStates.Playing);
 	}
 
 	private static void LoadWorldTileData (int x, int y) {
 		tileData[x, y] = new WorldTileData ();
 	}
 
-	public static void SetWorldTileData (Int2 pos, Size buildingSize) {
-		if (!IsWorldTileBuildable (pos, buildingSize))
+	public static void SetWorldTileData (Int2 point, Size buildingSize) {
+		if (!IsWorldTileBuildable (point, buildingSize))
 			return;
 
-		tileData[pos.x, pos.y].type = TileTypes.BuildingCore;
+		tileData[point.x, point.y].type = TileTypes.BuildingCore;
 
 		// We need to change this, if we're going to handle more than size 2 buildings
 		if (buildingSize.width > 1) {
-			tileData[pos.x + 1, pos.y].type = TileTypes.BuildingPart;
+			tileData[point.x + 1, point.y].type = TileTypes.BuildingPart;
 		}
 
 		if (buildingSize.height > 1) {
-			tileData[pos.x, pos.y + 1].type = TileTypes.BuildingPart;
-			tileData[pos.x + 1, pos.y + 1].type = TileTypes.BuildingPart;
+			tileData[point.x, point.y + 1].type = TileTypes.BuildingPart;
+			tileData[point.x + 1, point.y + 1].type = TileTypes.BuildingPart;
 		}
 	}
 

@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222000010524538280}
   - component: {fileID: 114000012745706222}
   m_Layer: 5
-  m_Name: Building_Detail
+  m_Name: Label_BuildingSize
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

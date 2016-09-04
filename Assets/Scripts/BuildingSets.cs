@@ -35,4 +35,8 @@ public class BuildingData {
 	public void BuildingBuilt () {
 		builtAmount++;
 	}
+
+	public void BuildingDestroyed () {
+		builtAmount--;
+	}
 }

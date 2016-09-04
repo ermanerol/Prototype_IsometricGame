@@ -18,6 +18,7 @@ public class TouchController : MonoBehaviour {
 	public static void SetBuilding (Building newBuilding) {
 		building = newBuilding;
 		mouseReleasedAfterBuildingSet = false;
+		GameStateManager.SetGameState (GameStates.Building);
 	}
 
 	private void ControlTouch () {
@@ -28,8 +29,9 @@ public class TouchController : MonoBehaviour {
 	}
 
 	private void ControlMouse () {
-		if (!building)
+		if (!building) {
 			return;
+		}
 
 		var point = World.GetTile (Camera.main.ScreenToWorldPoint (Input.mousePosition));
 
@@ -40,6 +42,7 @@ public class TouchController : MonoBehaviour {
 			}
 			building.PutDownBuilding (point);
 			building = null;
+			GameStateManager.SetGameState (GameStates.Playing);
 		}
 		else {
 			building.PositionBuilding (point);

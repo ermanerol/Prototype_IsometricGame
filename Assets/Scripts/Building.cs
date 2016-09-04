@@ -6,21 +6,22 @@ using UnityEngine;
 public class Building : Tile {
 
 	public const float SURROUNDING_GAP = 0.04f;
-	public const float BUILDING_GAP = 0f;//.05f;
+	public const float BUILDING_GAP = 0.05f;
 
-	private Int2 point;
+	private bool buildingPlaced = false;
 
-	private BuildingData set;
+	private BuildingData buildingData;
 	private SpriteRenderer sRenderer;
 
-	public void SetBuilding (BuildingData set) {
-		this.set = set;
+	public void SetBuilding (BuildingData buildingData) {
+		this.buildingData = buildingData;
 		sRenderer = GetComponent<SpriteRenderer> ();
-		sRenderer.sprite = set.sprite;
+		sRenderer.sprite = buildingData.sprite;
+		gameObject.AddComponent<PolygonCollider2D> ().isTrigger = true;
 	}
 
 	public bool PositionBuilding (Int2 point) {
-		var buildable = WorldManager.IsWorldTileBuildable (point, set.size);
+		var buildable = WorldManager.IsWorldTileBuildable (point, buildingData.size);
 		if (buildable) {
 			sRenderer.color = Color.white;
 		}
@@ -28,9 +29,8 @@ public class Building : Tile {
 			sRenderer.color = Color.red;
 		}
 
-		this.point = point;
 		var pos = GetTilePositon (point);
-		pos.y += set.size.height * (SURROUNDING_GAP + BUILDING_GAP) + Tile.BOTTOM_GAP;
+		pos.y += buildingData.size.height * (SURROUNDING_GAP + BUILDING_GAP) + Tile.BOTTOM_GAP;
 		sRenderer.sortingOrder = (int) -(pos.y * 10);
 		transform.position = pos;
 		return buildable;
@@ -40,8 +40,24 @@ public class Building : Tile {
 		if (!PositionBuilding (point))
 			return;
 		
-		WorldManager.SetWorldTileData (point, set.size);
+		WorldManager.SetWorldTileData (point, buildingData.size);
 		sRenderer.color = Color.white;
-		set.BuildingBuilt ();
+		buildingData.BuildingBuilt ();
+		buildingPlaced = true;
+	}
+
+	public void DestroyBuilding () {
+		buildingData.BuildingDestroyed ();
+		Destroy (gameObject);
+	}
+
+	void OnMouseUp () {
+		if (!buildingPlaced)
+			return;
+
+		if (GameStateManager.state != GameStates.Playing)
+			return;
+
+		PopupManager.ShowBuildingDetailPopup(this, buildingData);
 	}
 }

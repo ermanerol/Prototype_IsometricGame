@@ -15,7 +15,7 @@ public class Tile : MonoBehaviour {
 		transform.position = pos;
 	}
 
-	public Vector2 GetTilePositon (Int2 point) {
+	public static Vector2 GetTilePositon (Int2 point) {
 		return new Vector2 (
 			point.x * size.half_width - point.y * size.half_height,
 			(point.x * size.half_width + point.y * size.half_height) * 0.5f
