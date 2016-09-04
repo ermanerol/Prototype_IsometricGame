@@ -9,8 +9,8 @@ public class WorldManager : MonoBehaviour {
 
 	public BuildingSets buildingSets;
 
-	void Start () {
-		GenerateWorld (); //TODO Move this to a event
+	void Awake () {
+		GenerateWorld ();
 	}
 
 	private void GenerateWorld () {
@@ -21,10 +21,5 @@ public class WorldManager : MonoBehaviour {
 				tile.GetComponent<Tile> ().SetTile (new Int2 (x, y));
 			}
 		}
-
-		var b = Instantiate (tileBuildingPrefab);
-		b.GetComponent<Building> ().SetBuilding (buildingSets.GetBuildingSet ());
-
-		TouchController.SetBuilding(b.GetComponent<Building> ());
 	}
 }

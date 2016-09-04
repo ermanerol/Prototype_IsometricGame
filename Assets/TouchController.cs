@@ -11,9 +11,13 @@ public class TouchController : MonoBehaviour {
 		ControlTouch ();
 		#endif
 	}
+
+	private static bool mouseReleasedAfterBuildingSet = true;
 	private static Building building = null;
+
 	public static void SetBuilding (Building newBuilding) {
 		building = newBuilding;
+		mouseReleasedAfterBuildingSet = false;
 	}
 
 	private void ControlTouch () {
@@ -26,9 +30,11 @@ public class TouchController : MonoBehaviour {
 	private void ControlMouse () {
 		if (!building)
 			return;
-		
 		if (Input.GetKeyUp (KeyCode.Mouse0)) {
-			System.Console.WriteLine ("Key up");
+			if (!mouseReleasedAfterBuildingSet) {
+				mouseReleasedAfterBuildingSet = true;
+				return;
+			}
 			building = null;
 		}
 		else {
