@@ -18,4 +18,21 @@ public class BuildingData {
 	public Sprite sprite;
 	[SerializeField]
 	public Size size;
+
+	[SerializeField]
+	public Color buildingColor;
+
+	[SerializeField]
+	public int maxAmount = 1;
+
+	[System.NonSerialized]
+	private int builtAmount = 0;
+
+	public bool canBuild {
+		get { return (maxAmount == -1) || builtAmount < maxAmount; }
+	}
+
+	public void BuildingBuilt () {
+		builtAmount++;
+	}
 }

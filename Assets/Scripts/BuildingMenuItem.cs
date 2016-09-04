@@ -14,9 +14,15 @@ public class BuildingMenuItem : MonoBehaviour {
 	}
 
 	public void OnClick () {
+		if (!building.canBuild) {
+			GetComponent<Image> ().color = new Color (1f, 1f, 1f, 0.5f);
+			return;
+		}
+		
 		var prefab = Resources.Load(Prefab.Tile_Building) as GameObject;
-		var clone = Instantiate (prefab);
-		clone.GetComponent<Building> ().SetBuilding (building);
-		TouchController.SetBuilding (clone.GetComponent<Building> ());
+		var clone = Instantiate (prefab).GetComponent<Building> ();
+
+		clone.SetBuilding (building);
+		TouchController.SetBuilding (clone);
 	}
 }

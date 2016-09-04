@@ -10,7 +10,9 @@ public class Size {
 	[SerializeField]
 	public int height;
 
+	[HideInInspector]
 	public float half_width;
+	[HideInInspector]
 	public float half_height;
 
 	public Size (int width, int height) {

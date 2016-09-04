@@ -14,3 +14,10 @@ public static class World { //TODO World constants and helper class. We might wa
 		return(pos);
 	}
 }
+
+public enum TileTypes {
+	NotDefined = 0,
+	Free = 1,
+	BuildingCore = 2,
+	BuildingPart = 3
+};

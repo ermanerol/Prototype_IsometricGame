@@ -12,11 +12,163 @@ MonoBehaviour:
   m_Name: BuildingsData
   m_EditorClassIdentifier: 
   buildingSets:
-  - sprite: {fileID: 21300000, guid: b6c8402e2c01947b6ab97b075e15f9ac, type: 3}
-    size:
-      width: 2
-      height: 2
   - sprite: {fileID: 21300000, guid: 74cb82c3cc03741b2a7bb66e43d6b2b3, type: 3}
     size:
       width: 1
       height: 1
+      half_width: 0
+      half_height: 0
+    buildingColor: {r: 0.81960785, g: 0.45490196, b: 0.34509805, a: 1}
+    maxAmount: 2
+  - sprite: {fileID: 21300000, guid: 8f53cb63d12a345e1b1290aee25dce71, type: 3}
+    size:
+      width: 1
+      height: 1
+      half_width: 0
+      half_height: 0
+    buildingColor: {r: 0.81960785, g: 0.45490196, b: 0.34509805, a: 1}
+    maxAmount: -1
+  - sprite: {fileID: 21300000, guid: 7836918efcbea447f85411cbc4285920, type: 3}
+    size:
+      width: 1
+      height: 1
+      half_width: 0
+      half_height: 0
+    buildingColor: {r: 0.81960785, g: 0.45490196, b: 0.34509805, a: 1}
+    maxAmount: -1
+  - sprite: {fileID: 21300000, guid: b4cbe42840be84f4681fcb54e7b28b7d, type: 3}
+    size:
+      width: 1
+      height: 1
+      half_width: 0
+      half_height: 0
+    buildingColor: {r: 0.81960785, g: 0.45490196, b: 0.34509805, a: 1}
+    maxAmount: -1
+  - sprite: {fileID: 21300000, guid: 0b9ef603bd5b04f829f085578d0faf68, type: 3}
+    size:
+      width: 1
+      height: 1
+      half_width: 0
+      half_height: 0
+    buildingColor: {r: 0.81960785, g: 0.45490196, b: 0.34509805, a: 1}
+    maxAmount: -1
+  - sprite: {fileID: 21300000, guid: b6c8402e2c01947b6ab97b075e15f9ac, type: 3}
+    size:
+      width: 2
+      height: 2
+      half_width: 0
+      half_height: 0
+    buildingColor: {r: 0, g: 1, b: 0.7411765, a: 1}
+    maxAmount: 1
+  - sprite: {fileID: 21300000, guid: d39d60f2e88414d73931fe30cc6c9554, type: 3}
+    size:
+      width: 2
+      height: 2
+      half_width: 0
+      half_height: 0
+    buildingColor: {r: 0, g: 0.7490196, b: 1, a: 1}
+    maxAmount: 1
+  - sprite: {fileID: 21300000, guid: 52c73bf0076894126b92e353d88b68d6, type: 3}
+    size:
+      width: 2
+      height: 2
+      half_width: 0
+      half_height: 0
+    buildingColor: {r: 0, g: 0.2509804, b: 1, a: 1}
+    maxAmount: 1
+  - sprite: {fileID: 21300000, guid: 275053890ce30482784f1afd842b68ba, type: 3}
+    size:
+      width: 2
+      height: 2
+      half_width: 0
+      half_height: 0
+    buildingColor: {r: 0.5019608, g: 0, b: 1, a: 1}
+    maxAmount: 1
+  - sprite: {fileID: 21300000, guid: 9761f268f6d3f4b078ba3451ecf4a63d, type: 3}
+    size:
+      width: 2
+      height: 2
+      half_width: 0
+      half_height: 0
+    buildingColor: {r: 1, g: 0.6, b: 1, a: 1}
+    maxAmount: 1
+  - sprite: {fileID: 21300000, guid: 7ffd36f100e5a4f99ba7dd628502451e, type: 3}
+    size:
+      width: 2
+      height: 2
+      half_width: 0
+      half_height: 0
+    buildingColor: {r: 1, g: 0.7490196, b: 0.7490196, a: 1}
+    maxAmount: 1
+  - sprite: {fileID: 21300000, guid: 29dfcda11ce6840bc8173096a71305ea, type: 3}
+    size:
+      width: 2
+      height: 2
+      half_width: 0
+      half_height: 0
+    buildingColor: {r: 0.40000004, g: 0, b: 0, a: 1}
+    maxAmount: 1
+  - sprite: {fileID: 21300000, guid: 1b7106bc1bb7b4725856d1d8f74a7a4a, type: 3}
+    size:
+      width: 2
+      height: 2
+      half_width: 0
+      half_height: 0
+    buildingColor: {r: 0.7490196, g: 0.7490196, b: 1, a: 1}
+    maxAmount: 1
+  - sprite: {fileID: 21300000, guid: cf2ddaf397ddd495da35f46703578d29, type: 3}
+    size:
+      width: 2
+      height: 2
+      half_width: 0
+      half_height: 0
+    buildingColor: {r: 1, g: 0.49803925, b: 0, a: 1}
+    maxAmount: 1
+  - sprite: {fileID: 21300000, guid: f54a11f8fbd3e4ef89fea31c5747a063, type: 3}
+    size:
+      width: 2
+      height: 2
+      half_width: 0
+      half_height: 0
+    buildingColor: {r: 0, g: 1, b: 0, a: 1}
+    maxAmount: 1
+  - sprite: {fileID: 21300000, guid: d1d5fe3ebf70d42638e8982b84247a5d, type: 3}
+    size:
+      width: 2
+      height: 2
+      half_width: 0
+      half_height: 0
+    buildingColor: {r: 0.40000004, g: 0.10196079, b: 0, a: 1}
+    maxAmount: 1
+  - sprite: {fileID: 21300000, guid: 6e679e617ed754331927723bff6209a5, type: 3}
+    size:
+      width: 2
+      height: 2
+      half_width: 0
+      half_height: 0
+    buildingColor: {r: 1, g: 1, b: 0.7490196, a: 1}
+    maxAmount: 1
+  - sprite: {fileID: 21300000, guid: 7a9eabd9749d149ea9a18fa292b098e3, type: 3}
+    size:
+      width: 2
+      height: 2
+      half_width: 0
+      half_height: 0
+    buildingColor: {r: 0.0627451, g: 0.2509804, b: 0, a: 1}
+    maxAmount: 1
+  - sprite: {fileID: 21300000, guid: bf398fb03478149eebefd445ecdea83f, type: 3}
+    size:
+      width: 2
+      height: 2
+      half_width: 0
+      half_height: 0
+    buildingColor: {r: 1, g: 0, b: 0, a: 1}
+    maxAmount: 1
+  - sprite: {fileID: 21300000, guid: f33b787355e624581b68b5adb38f2096, type: 3}
+    size:
+      width: 2
+      height: 2
+      half_width: 0
+      half_height: 0
+    buildingColor: {r: 0.59607846, g: 0.79215693, b: 0.28627452, a: 1}
+    maxAmount: 1
