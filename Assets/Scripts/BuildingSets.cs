@@ -5,15 +5,18 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "BuildingsData")]
 public class BuildingSets : ScriptableObject {
 	
-	public BuildingData[] buildingSets;
+	public BuildingData[] buildingDatas;
 
-	public BuildingData GetBuildingSet () {
-		return buildingSets[Random.Range (0, buildingSets.Length)];
+	public BuildingData GetBuildingData (int index) {
+		return buildingDatas[index];
 	}
 }
 
 [System.Serializable]
 public class BuildingData {
+	[SerializeField]
+	public int buildingIndex;
+
 	[SerializeField]
 	public Sprite sprite;
 	[SerializeField]

@@ -9,10 +9,11 @@ public class BuildingMenuManager : MonoBehaviour {
 	public GameObject prefabBuildingMenuItem;
 
 	void Awake () {
-		for (int i = 0; i < buildings.buildingSets.Length; i++) {
+		for (int i = 0; i < buildings.buildingDatas.Length; i++) {
 			var g = Instantiate (prefabBuildingMenuItem) as GameObject;
 			g.transform.SetParent (transform);
-			g.GetComponent<BuildingMenuItem> ().SetData(buildings.buildingSets[i]);
+			g.GetComponent<BuildingMenuItem> ().SetData(buildings.buildingDatas[i]);
 		}
+
 	}
 }

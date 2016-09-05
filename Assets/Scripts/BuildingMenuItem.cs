@@ -9,6 +9,7 @@ public class BuildingMenuItem : MonoBehaviour {
 
 	public void SetData (BuildingData building) {
 		this.building = building;
+
 		GetComponent<Image> ().sprite = building.sprite;
 		transform.GetChild(0).GetComponent<Text> ().text = building.size.ToString ();
 	}
@@ -18,10 +19,8 @@ public class BuildingMenuItem : MonoBehaviour {
 			GetComponent<Image> ().color = new Color (1f, 1f, 1f, 0.5f);
 			return;
 		}
-		
-		var prefab = Resources.Load(Prefab.Tile_Building) as GameObject;
-		var clone = Instantiate (prefab).GetComponent<Building> ();
-
+			
+		var clone = (Instantiate (Prefab.tileBuilding) as GameObject).GetComponent<Building> ();
 		clone.SetBuilding (building);
 		TouchController.SetBuilding (clone);
 	}

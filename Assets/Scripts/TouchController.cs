@@ -34,18 +34,20 @@ public class TouchController : MonoBehaviour {
 		}
 
 		var point = World.GetTile (Camera.main.ScreenToWorldPoint (Input.mousePosition));
+		//Debug.Log ("point : " + point);
 
 		if (Input.GetKeyUp (KeyCode.Mouse0)) {
 			if (!mouseReleasedAfterBuildingSet) { // We're preventing putting down building as soon as the building selected
 				mouseReleasedAfterBuildingSet = true;
 				return;
 			}
-			building.PutDownBuilding (point);
+			if (!building.PutDownSelf (point))
+				return;
 			building = null;
 			GameStateManager.SetGameState (GameStates.Playing);
 		}
 		else {
-			building.PositionBuilding (point);
+			building.PositionSelf (point);
 		}
 	}
 }

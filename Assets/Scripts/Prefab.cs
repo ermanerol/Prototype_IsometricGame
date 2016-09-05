@@ -9,4 +9,10 @@ public static class Prefab {
 	public const string Tile_Dirt = "Prefab_Tile_Dirt";
 
 	public const string Popup_BuildingDetail = "Popup_BuildingDetail";
+
+	public static GameObject tileBuilding {
+		get {
+			return Resources.Load(Prefab.Tile_Building) as GameObject;
+		}
+	} 
 }

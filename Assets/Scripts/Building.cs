@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//TODO We need to make this abstract or interface things
 public class Building : Tile {
 
 	public const float SURROUNDING_GAP = 0.04f;
@@ -13,6 +12,8 @@ public class Building : Tile {
 	private BuildingData buildingData;
 	private SpriteRenderer sRenderer;
 
+	private Int2 placedPoint;
+
 	public void SetBuilding (BuildingData buildingData) {
 		this.buildingData = buildingData;
 		sRenderer = GetComponent<SpriteRenderer> ();
@@ -20,7 +21,7 @@ public class Building : Tile {
 		gameObject.AddComponent<PolygonCollider2D> ().isTrigger = true;
 	}
 
-	public bool PositionBuilding (Int2 point) {
+	public bool PositionSelf (Int2 point) {
 		var buildable = WorldManager.IsWorldTileBuildable (point, buildingData.size);
 		if (buildable) {
 			sRenderer.color = Color.white;
@@ -36,18 +37,30 @@ public class Building : Tile {
 		return buildable;
 	}
 
-	public void PutDownBuilding (Int2 point) {
-		if (!PositionBuilding (point))
-			return;
-		
-		WorldManager.SetWorldTileData (point, buildingData.size);
+	public bool PutDownSelf (Int2 point) {
+		if (!PositionSelf (point))
+			return false;
+
+		placedPoint = point;
+		WorldManager.SetWorldTileData (point, buildingData.buildingIndex, buildingData.size);
+		sRenderer.color = Color.white;
+		buildingData.BuildingBuilt ();
+		buildingPlaced = true;
+		return true;
+	}
+
+	public void PutDownSelfWithoutControl (Int2 point) {
+		PositionSelf (point);
+		placedPoint = point;
+		WorldManager.SetWorldTileData (point, buildingData.buildingIndex, buildingData.size, true);
 		sRenderer.color = Color.white;
 		buildingData.BuildingBuilt ();
 		buildingPlaced = true;
 	}
 
-	public void DestroyBuilding () {
+	public void DestroySelf () {
 		buildingData.BuildingDestroyed ();
+		WorldManager.ResetWorldTileData (placedPoint, buildingData.size);
 		Destroy (gameObject);
 	}
 

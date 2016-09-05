@@ -19,7 +19,7 @@ public class PopupBuildingDetail : MonoBehaviour {
 	}
 
 	public void DeleteBuilding () {
-		building.DestroyBuilding();
+		building.DestroySelf();
 		ClosePopup ();
 	}
 
