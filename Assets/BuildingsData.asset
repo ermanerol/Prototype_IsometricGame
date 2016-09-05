@@ -20,7 +20,7 @@ MonoBehaviour:
       half_width: 0
       half_height: 0
     buildingColor: {r: 0.81960785, g: 0.45490196, b: 0.34509805, a: 1}
-    maxAmount: 2
+    maxAmount: -1
   - buildingIndex: 1
     sprite: {fileID: 21300000, guid: 8f53cb63d12a345e1b1290aee25dce71, type: 3}
     size:

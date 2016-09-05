@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraPan : MonoBehaviour {
 
-	private float speed = 2;
+	private float speed = 3;
 	private Vector3 lastPos;
 	private Vector3 startPos;
 

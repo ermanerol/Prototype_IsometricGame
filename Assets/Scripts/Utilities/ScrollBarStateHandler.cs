@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// Prevents camera to pan while scrolling buildings scroll list
+/// </summary>
 public class ScrollBarStateHandler : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 
 	public void OnPointerDown (PointerEventData data) {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class TouchController : MonoBehaviour {
 
 	void Update () {
-		#if UNITY_EDITOR //TODO Add other platforms
+		#if UNITY_EDITOR || UNITY_STANDALONE || UNITY_STANDALONE_OSX
 		ControlMouse ();
 		#else
 		ControlTouch ();
@@ -15,6 +15,9 @@ public class TouchController : MonoBehaviour {
 	private static bool mouseReleasedAfterBuildingSet = true;
 	private static Building building = null;
 
+	/// <summary>
+	/// Set Building to be positioned
+	/// </summary>
 	public static void SetBuilding (Building newBuilding) {
 		building = newBuilding;
 		mouseReleasedAfterBuildingSet = false;
@@ -28,6 +31,9 @@ public class TouchController : MonoBehaviour {
 //		var touch = Input.GetTouch (0);
 	}
 
+	/// <summary>
+	/// If building is set move with mouse pointer and PutDown if mouse is released
+	/// </summary>
 	private void ControlMouse () {
 		if (!building) {
 			return;

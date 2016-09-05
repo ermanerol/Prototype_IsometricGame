@@ -15,6 +15,9 @@ public class WorldManager : MonoBehaviour {
 		GameStateManager.SetGameState (GameStates.Playing);
 	}
 
+	/// <summary>
+	/// Clone world tiles and load world tile data
+	/// </summary>
 	private void GenerateWorld () {
 		for (int x = 0; x < World.SIZE_X; x++) {
 			for (int y = 0; y < World.SIZE_Y; y++) {
@@ -27,6 +30,9 @@ public class WorldManager : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// Control all tiles for buildings on tiles
+	/// </summary>
 	private void SetLoadedBuildings () {
 		for (int x = 0; x < World.SIZE_X; x++) {
 			for (int y = 0; y < World.SIZE_Y; y++) {
@@ -35,6 +41,9 @@ public class WorldManager : MonoBehaviour {
 		}
 	}
 
+	/// <summary>
+	/// If building is loaded on point. Clone, set building data and put down building on point.
+	/// </summary>
 	private void SetBuilding (Int2 point) {
 		if (tileData[point.x, point.y].type != TileTypes.BuildingCore)
 			return;
@@ -45,6 +54,9 @@ public class WorldManager : MonoBehaviour {
 		clone.PutDownSelfWithoutControl (point);
 	}
 
+	/// <summary>
+	/// Fill tile with given size with data of building type.
+	/// </summary>
 	public static void SetWorldTileData (Int2 point, int buildingIndex, Size buildingSize, bool overrideControl = false) {
 		if (!IsWorldTileBuildable (point, buildingSize) && !overrideControl)
 			return;
@@ -63,27 +75,34 @@ public class WorldManager : MonoBehaviour {
 		}
 	}
 
-	public static bool IsWorldTileBuildable (Int2 pos, Size buildingSize) {
+	/// <summary>
+	/// Controls if point with given size is inside world and no building is placed on tiles
+	/// </summary>
+	/// <returns>Return true if tile is buildable.</returns>
+	public static bool IsWorldTileBuildable (Int2 point, Size buildingSize) {
 		var buildable = true;
 
-		if(pos.x < 0 || pos.x >= World.SIZE_X || pos.y < 0 || pos.y >= World.SIZE_Y) {
+		if(point.x < 0 || point.x >= World.SIZE_X || point.y < 0 || point.y >= World.SIZE_Y) {
 			return false;
 		}
 		
-		buildable = buildable && tileData[pos.x, pos.y].isFree;
+		buildable = buildable && tileData[point.x, point.y].isFree;
 
 		if (buildingSize.width > 1) {
-			buildable = buildable && tileData[pos.x + 1, pos.y].isFree;
+			buildable = buildable && tileData[point.x + 1, point.y].isFree;
 		}
 
 		if (buildingSize.height > 1) {
-			buildable = buildable && tileData[pos.x, pos.y + 1].isFree;
-			buildable = buildable && tileData[pos.x + 1, pos.y + 1].isFree;
+			buildable = buildable && tileData[point.x, point.y + 1].isFree;
+			buildable = buildable && tileData[point.x + 1, point.y + 1].isFree;
 		}
 
 		return buildable;
 	}
 
+	/// <summary>
+	/// Resets values on tile
+	/// </summary>
 	public static void ResetWorldTileData (Int2 point, Size buildingSize) {
 		tileData[point.x, point.y].type = TileTypes.Free;
 		PlayerPrefsHelper.DeleteTileData (point);
@@ -99,6 +118,9 @@ public class WorldManager : MonoBehaviour {
 	}
 }
 
+/// <summary>
+/// Holds data of tile. ie. if tile is free or building is placed on tile
+/// </summary>
 public class WorldTileData {
 	
 	public TileTypes type { get; set; }

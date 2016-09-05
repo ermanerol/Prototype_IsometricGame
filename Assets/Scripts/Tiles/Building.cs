@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Building object with visible sprite
+/// </summary>
 public class Building : Tile {
 
-	public const float SURROUNDING_GAP = 0.04f;
+	public const float SURROUNDING_GAP = 0.02f;
 	public const float BUILDING_GAP = 0.05f;
 
 	private bool buildingPlaced = false;
@@ -14,6 +17,9 @@ public class Building : Tile {
 
 	private Int2 placedPoint;
 
+	/// <summary>
+	/// Assign building data, set sprite and add trigger to catch click events.
+	/// </summary>
 	public void SetBuilding (BuildingData buildingData) {
 		this.buildingData = buildingData;
 		sRenderer = GetComponent<SpriteRenderer> ();
@@ -21,6 +27,10 @@ public class Building : Tile {
 		gameObject.AddComponent<PolygonCollider2D> ().isTrigger = true;
 	}
 
+	/// <summary>
+	/// Move building to world position and set color to red if not buildable
+	/// </summary>
+	/// <returns>Returns true if position is buildable</returns>
 	public bool PositionSelf (Int2 point) {
 		var buildable = WorldManager.IsWorldTileBuildable (point, buildingData.size);
 		if (buildable) {
@@ -37,6 +47,10 @@ public class Building : Tile {
 		return buildable;
 	}
 
+	/// <summary>
+	/// If in buildable position place building and set building data to world tile.
+	/// </summary>
+	/// <returns>Returns true if building is put down</returns>
 	public bool PutDownSelf (Int2 point) {
 		if (!PositionSelf (point))
 			return false;
@@ -49,6 +63,9 @@ public class Building : Tile {
 		return true;
 	}
 
+	/// <summary>
+	/// Place building and set building data to world tile. Used at first world load.
+	/// </summary>
 	public void PutDownSelfWithoutControl (Int2 point) {
 		PositionSelf (point);
 		placedPoint = point;
@@ -58,12 +75,18 @@ public class Building : Tile {
 		buildingPlaced = true;
 	}
 
+	/// <summary>
+	/// Destroy building and reset building data on the world tile.
+	/// </summary>
 	public void DestroySelf () {
 		buildingData.BuildingDestroyed ();
 		WorldManager.ResetWorldTileData (placedPoint, buildingData.size);
 		Destroy (gameObject);
 	}
 
+	/// <summary>
+	/// Show building detail popup if building is placed and game state is playing.
+	/// </summary>
 	void OnMouseUp () {
 		if (!buildingPlaced)
 			return;

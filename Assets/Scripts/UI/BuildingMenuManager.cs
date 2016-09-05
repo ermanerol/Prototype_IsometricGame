@@ -10,8 +10,9 @@ public class BuildingMenuManager : MonoBehaviour {
 
 	public GameObject prefabBuildingMenuItem;
 
-	public Scrollbar scroll;
-
+	/// <summary>
+	/// Clones all buildings on menu scroll
+	/// </summary>
 	void Awake () {
 		for (int i = 0; i < buildings.buildingDatas.Length; i++) {
 			var g = Instantiate (prefabBuildingMenuItem) as GameObject;

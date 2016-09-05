@@ -695,7 +695,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.1592312, g: 0.4745098, b: 0, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -727,7 +727,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1598274948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: -10}
+  m_LocalPosition: {x: 0, y: 3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1054,7 +1054,6 @@ MonoBehaviour:
   buildings: {fileID: 11400000, guid: 11124d0b8cfae48318bd087a9ba5840d, type: 2}
   prefabBuildingMenuItem: {fileID: 1000013103013128, guid: 8df559fced490442694052db05b07308,
     type: 2}
-  scroll: {fileID: 0}
 --- !u!1 &2074620583
 GameObject:
   m_ObjectHideFlags: 0
