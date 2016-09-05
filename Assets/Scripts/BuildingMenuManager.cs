@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class BuildingMenuManager : MonoBehaviour {
 
@@ -8,12 +10,13 @@ public class BuildingMenuManager : MonoBehaviour {
 
 	public GameObject prefabBuildingMenuItem;
 
+	public Scrollbar scroll;
+
 	void Awake () {
 		for (int i = 0; i < buildings.buildingDatas.Length; i++) {
 			var g = Instantiate (prefabBuildingMenuItem) as GameObject;
 			g.transform.SetParent (transform);
 			g.GetComponent<BuildingMenuItem> ().SetData(buildings.buildingDatas[i]);
 		}
-
 	}
 }

@@ -6,7 +6,8 @@ public enum GameStates {
 	Initializing,
 	Playing,
 	Building,
-	Paused
+	Paused,
+	Scrolling
 };
 
 public static class GameStateManager {
