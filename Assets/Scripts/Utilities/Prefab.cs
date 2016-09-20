@@ -14,5 +14,11 @@ public static class Prefab {
 		get {
 			return Resources.Load(Prefab.Tile_Building) as GameObject;
 		}
-	} 
+	}
+
+	public static GameObject tileDirt {
+		get {
+			return Resources.Load (Prefab.Tile_Dirt) as GameObject;
+		}
+	}
 }

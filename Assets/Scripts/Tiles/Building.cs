@@ -13,17 +13,15 @@ public class Building : Tile {
 	private bool buildingPlaced = false;
 
 	private BuildingData buildingData;
-	private SpriteRenderer sRenderer;
 
 	private Int2 placedPoint;
 
 	/// <summary>
 	/// Assign building data, set sprite and add trigger to catch click events.
 	/// </summary>
-	public void SetBuilding (BuildingData buildingData) {
+	public void SetBuildingData (BuildingData buildingData) {
 		this.buildingData = buildingData;
-		sRenderer = GetComponent<SpriteRenderer> ();
-		sRenderer.sprite = buildingData.sprite;
+		spriteRender.sprite = buildingData.sprite;
 		gameObject.AddComponent<PolygonCollider2D> ().isTrigger = true;
 	}
 
@@ -31,18 +29,18 @@ public class Building : Tile {
 	/// Move building to world position and set color to red if not buildable
 	/// </summary>
 	/// <returns>Returns true if position is buildable</returns>
-	public bool PositionSelf (Int2 point) {
+	public override bool PositionSelf (Int2 point) {
 		var buildable = WorldManager.IsWorldTileBuildable (point, buildingData.size);
 		if (buildable) {
-			sRenderer.color = Color.white;
+			spriteRender.color = Color.white;
 		}
 		else {
-			sRenderer.color = Color.red;
+			spriteRender.color = Color.red;
 		}
 
-		var pos = GetTilePositon (point);
+		var pos = GetWorldPosition (point);
 		pos.y += buildingData.size.height * (SURROUNDING_GAP + BUILDING_GAP) + Tile.BOTTOM_GAP;
-		sRenderer.sortingOrder = (int) -(pos.y * 10);
+		SetSortingOrder ();
 		transform.position = pos;
 		return buildable;
 	}
@@ -50,29 +48,19 @@ public class Building : Tile {
 	/// <summary>
 	/// If in buildable position place building and set building data to world tile.
 	/// </summary>
-	/// <returns>Returns true if building is put down</returns>
-	public bool PutDownSelf (Int2 point) {
-		if (!PositionSelf (point))
+	/// <param name="point">Tile position to be put down on</param>
+	/// <param name="overrideControl">Should override the control of placeable tile</param>
+	/// <returns>Returns true if building is put down successfully</returns>
+	public bool PutDownSelf (Int2 point, bool overrideControl = false) {
+		if (!PositionSelf (point) && !overrideControl)
 			return false;
 
 		placedPoint = point;
-		WorldManager.SetWorldTileData (point, buildingData.buildingIndex, buildingData.size);
-		sRenderer.color = Color.white;
+		WorldManager.SetWorldTileData (point, buildingData.buildingIndex, buildingData.size, overrideControl);
+		spriteRender.color = Color.white;
 		buildingData.BuildingBuilt ();
 		buildingPlaced = true;
 		return true;
-	}
-
-	/// <summary>
-	/// Place building and set building data to world tile. Used at first world load.
-	/// </summary>
-	public void PutDownSelfWithoutControl (Int2 point) {
-		PositionSelf (point);
-		placedPoint = point;
-		WorldManager.SetWorldTileData (point, buildingData.buildingIndex, buildingData.size, true);
-		sRenderer.color = Color.white;
-		buildingData.BuildingBuilt ();
-		buildingPlaced = true;
 	}
 
 	/// <summary>

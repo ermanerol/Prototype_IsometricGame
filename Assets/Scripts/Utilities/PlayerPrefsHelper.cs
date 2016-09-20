@@ -13,7 +13,7 @@ public static class PlayerPrefsHelper{
 	/// </summary>
 	/// <returns>Return tile type if there is saved data on given point</returns>
 	public static TileTypes ReadTileData (Int2 point) {
-		return (TileTypes) PlayerPrefs.GetInt (TILE_DATA_PREFIX + point.x + COORD_SEPERATOR + point.y, (int) TileTypes.Free);
+		return (TileTypes) PlayerPrefs.GetInt (TILE_DATA_PREFIX + point.x + COORD_SEPERATOR + point.y, (int) TileTypes.Ground);
 	}
 
 	/// <summary>

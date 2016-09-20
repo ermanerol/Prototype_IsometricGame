@@ -21,7 +21,7 @@ public static class World {
 
 public enum TileTypes {
 	NotDefined = 0,
-	Free = 1,
+	Ground = 1,
 	BuildingCore = 2,
 	BuildingPart = 3
 };

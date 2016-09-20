@@ -27,7 +27,7 @@ public class BuildingMenuItem : MonoBehaviour {
 		}
 			
 		var clone = (Instantiate (Prefab.tileBuilding) as GameObject).GetComponent<Building> ();
-		clone.SetBuilding (building);
+		clone.SetBuildingData (building);
 		TouchController.SetBuilding (clone);
 	}
 }
